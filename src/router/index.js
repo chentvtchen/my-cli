@@ -1,24 +1,29 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-];
+// 批量引入路由
+const req = require.context('../views', true, /\.vue$/, 'lazy');
+const routes = [{
+  path: '/',
+  name: 'home',
+  component: () => import('../views/Home.vue')
+}];
+req.keys().forEach((filename) => {
+  const newPath = filename.substring(2, filename.length - 4);
+  const newName = newPath.replace(/\//g, '_');
+  const file = req(filename);
+  console.log(file.name);
+  routes.push({
+    path: `/${newPath}`,
+    name: newName,
+    // meta: {
+    //   title: req(filename).data.name
+    // },
+    component: () => req(filename)
+  });
+});
 
 const router = new VueRouter({
   routes

@@ -15,8 +15,8 @@ export default {
     HelloWorld
   },
   created() {
-    this.$api.getUserInfo();
-    this.$deepClone();
+    // this.$api.getUserInfo();
+    // this.$deepClone();
   }
 };
 </script>
