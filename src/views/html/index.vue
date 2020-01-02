@@ -10,6 +10,8 @@
     <p>position:absolute; top: 0; left:0; right: 0; bottom: 0;</p>
     <p>display:flex;  just-content:center; align-item:center; </p>
     <p>display:table-cell; vertical-align: middle;</p>
+    <h2 class="heading">三列布局的六种方式（20 minutes）</h2>
+    <p>flex、grid、absolute、圣杯、双飞翼、float、用BFC原理做三栏布局</p>
   </div>
 </template>
 

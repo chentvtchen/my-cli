@@ -2,12 +2,12 @@
   <div id="app" class="content" :class="rowClass">
     <request-loading></request-loading>
     <!-- 两列布局 -->
-    <div class="nav">
+    <!-- <div class="nav">
       1
     </div>
     <div class="body">
-      <router-view/>
-    </div>
+    </div> -->
+    <router-view/>
   </div>
 </template>
 <script>
@@ -102,13 +102,14 @@ $navWidth: 100px;
     }
   }
   /************左列定宽，右边自适应 end************/
+  /************一列不定，一列自适应 start************/
   // 左边自适应，右边定宽
   .flexRow {
     .nav {
       width: 50px;
     }
   }
-  // 一列不定，一列自适应
+  /************一列不定，一列自适应 end************/
 }
 
 
